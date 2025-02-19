@@ -10,12 +10,11 @@ const EmailScrambleProtection = () => {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(null);
 
-  // ... rest of the states and functions remain the same ...
+  // ... keeping all the other functions the same ...
 
   return (
     <div className="p-4 bg-transparent">
-      <div className="max-w 
--full bg-white rounded-lg shadow-md p-4">
+      <div className="max-w-full bg-white rounded-lg shadow-md p-4">
         <div className="text-center mb-3">
           <h2 className="text-lg font-semibold mb-1" role="heading">Protected Email Address</h2>
           <p className="text-gray-600 text-sm" aria-live="polite">
@@ -23,8 +22,8 @@ const EmailScrambleProtection = () => {
           </p>
         </div>
 
-        <div className="mb-4 h-10 flex items-center justify-center bg-gray-100 rounded relative">
-          <span className="font-mono text-base" aria-live="polite">
+        <div className="mb-4 h-10 flex items-center bg-gray-100 rounded relative px-8">
+          <span className="font-mono text-base flex-grow text-center" aria-live="polite">
             {isRevealed ? email : scrambled}
           </span>
           {isRevealed && (
