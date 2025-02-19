@@ -6,7 +6,6 @@ const EmailScrambleProtection = () => {
   const [scrambled, setScrambled] = useState('');
   const [isRevealed, setIsRevealed] = useState(false);
   const [dragPosition, setDragPosition] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
 
   const scrambleEmail = (input) => {
     const [username, domain] = input.split('@');
@@ -32,31 +31,15 @@ const EmailScrambleProtection = () => {
     return () => clearInterval(interval);
   }, [isRevealed, email]);
 
-  const handleInteractionStart = (e) => {
-    setIsDragging(true);
-    if (e.touches) e.preventDefault(); // Prevent scrolling on mobile
-  };
-
-  const handleInteractionMove = (e) => {
-    if (!isDragging) return;
-    const touch = e.touches?.[0];
-    const clientX = touch?.clientX || e.clientX;
+  const handleMove = (e) => {
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const newPosition = Math.max(0, Math.min(100, (x / rect.width) * 100));
     
-    const container = e.currentTarget.getBoundingClientRect();
-    const x = clientX - container.left;
-    const newPosition = Math.max(0, Math.min(100, (x / container.width) * 100));
     setDragPosition(newPosition);
-    
-    if (newPosition >= 95) {
+    if (newPosition > 90) {
       setIsRevealed(true);
-      setIsDragging(false);
-    }
-  };
-
-  const handleInteractionEnd = () => {
-    setIsDragging(false);
-    if (dragPosition < 95) {
-      setDragPosition(0);
     }
   };
 
@@ -79,13 +62,8 @@ const EmailScrambleProtection = () => {
         {!isRevealed && (
           <div 
             className="relative h-10 bg-gray-200 rounded cursor-pointer select-none"
-            onMouseDown={handleInteractionStart}
-            onMouseMove={handleInteractionMove}
-            onMouseUp={handleInteractionEnd}
-            onMouseLeave={handleInteractionEnd}
-            onTouchStart={handleInteractionStart}
-            onTouchMove={handleInteractionMove}
-            onTouchEnd={handleInteractionEnd}
+            onMouseMove={handleMove}
+            onTouchMove={handleMove}
           >
             <div 
               className="absolute top-0 left-0 h-full bg-[#FFD93D] rounded transition-all"
