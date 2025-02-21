@@ -109,8 +109,12 @@ The component uses Tailwind CSS for styling and includes these brand colors:
 
 ## License
 
-MIT License - feel free to use in any project
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Feel free to use this code in any project, commercial or non-commercial. Attribution is appreciated but not required. The software is provided "as is" without warranty of any kind.
 
 ## Credits
 
 Created by Seth Redmore / Redmore Studio
+
+If you use this project, a link back or credit is appreciated but not required. Feel free to modify, distribute, and use in any way you see fit!
