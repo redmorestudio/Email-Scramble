@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Email Scramble Protection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React component that protects email addresses from web scrapers while maintaining a sleek user experience. The component continuously scrambles the email address until a user physically interacts with it, making it difficult for bots to capture the real address.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🔒 Continuous email scrambling for bot protection
+- 📱 Touch and mouse support for all devices
+- 🎨 Clean, modern design with customizable styling
+- ♿ Accessibility considerations
+- 🔄 Smooth slider interaction
+- 📦 Easy to integrate
 
-### `npm start`
+## Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can see the component in action at: [https://email-scramble.onrender.com](https://email-scramble.onrender.com)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Integration Guide
 
-### `npm test`
+### WordPress Integration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Add this component to your WordPress site using either a shortcode or direct iframe embedding.
 
-### `npm run build`
+#### Using Shortcode
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Add this to your theme's `functions.php` or a site-specific plugin:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```php
+function email_protector_shortcode() {
+    return '<iframe 
+        src="https://email-scramble.onrender.com" 
+        width="100%" 
+        height="200" 
+        frameborder="0" 
+        scrolling="no"
+        style="overflow:hidden; max-width: 500px; margin: 0 auto; display: block;"
+    ></iframe>';
+}
+add_shortcode('email_protector', 'email_protector_shortcode');
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then use it in any post or page with:
+```
+[email_protector]
+```
 
-### `npm run eject`
+#### Direct HTML Integration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Add this HTML where you want the email protection to appear:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```html
+<iframe 
+    src="https://email-scramble.onrender.com" 
+    width="100%" 
+    height="200" 
+    frameborder="0" 
+    scrolling="no"
+    style="overflow:hidden; max-width: 500px; margin: 0 auto; display: block;"
+></iframe>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+- Node.js (v14 or higher)
+- npm or yarn
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Local Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository:
+```bash
+git clone https://github.com/redmorestudio/Email-Scramble.git
+cd Email-Scramble
+```
 
-### Code Splitting
+2. Install dependencies:
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Start the development server:
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+### Building for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+```
 
-### Making a Progressive Web App
+## Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The component uses Tailwind CSS for styling and includes these brand colors:
 
-### Advanced Configuration
+- Main Brand Color: Teal (#2AA8B3) - titles and links
+- Accent Color: Yellow (#FFD93D) - buttons and sliders
+- Secondary Accent: Coral (#FF6F61) - content headers
+- Text Color: Dark Gray (#3A3A3A) - body text
+- Background: Light Gray (#F5F5F5) - containers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Security Features
 
-### Deployment
+- Email is never present in the HTML source
+- Continuous scrambling makes scraping difficult
+- Human interaction required to reveal email
+- Touch/click events required (can't be automated)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
+MIT License - feel free to use in any project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Credits
+
+Created by Seth Redmore / Redmore Studio
